@@ -2,6 +2,7 @@ const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-purgecss');
 require('laravel-mix-copy-watched');
+require('dotenv').config({path: '../bedrock/.env'}); // Require dotenv from bedrock
 
 /*
  |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ require('laravel-mix-copy-watched');
 
 mix
   .setPublicPath('./dist')
-  .browserSync('sage.test');
+  .browserSync(process.env.WP_HOME);
 
 mix
   .sass('resources/assets/styles/app.scss', 'styles')
